@@ -58,7 +58,7 @@ function sendToDisc(title, message, footer, webhookURL, color)
 	function(err, text, headers) end, 'POST', json.encode({username = name, embeds = embed}), { ['Content-Type'] = 'application/json' })
   -- END
 end
-RegisterCommand('duty', function(source, args, rawCommand)
+if v and (v.PlayerData.job.name == "police" or v.PlayerData.job.name == "lspd" or v.PlayerData.job.name == "bcso" or v.PlayerData.job.name == "sasp" or v.PlayerData.job.name == "fbi" or v.PlayerData.job.name == "iaa" or v.PlayerData.job.name == "ambulance") and v.PlayerData.job.onduty then
 	-- The /blip command to toggle on and off the cop blip  
 	if hasPerms[source] ~= nil then 
 		if onDuty[source] == nil then 
