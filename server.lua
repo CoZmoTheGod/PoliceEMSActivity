@@ -97,13 +97,14 @@ if v and (v.PlayerData.job.name == "police" or v.PlayerData.job.name == "lspd" o
 		-- You are not a cop, you must be a cop in our discord to use it 
 		sendMsg(source, '^1ERROR: You must be an LEO on our discord to use this...')
 	end
-end)
-RegisterCommand('cops', function(source, args, rawCommand) 
+if v and (v.PlayerData.job.name == "police" or v.PlayerData.job.name == "lspd" or v.PlayerData.job.name == "bcso" or v.PlayerData.job.name == "sasp" or v.PlayerData.job.name == "fbi" or v.PlayerData.job.name == "iaa" or v.PlayerData.job.name == "ambulance") and v.PlayerData.job.onduty then
+	RegisterCommand('cops', function(source, args, rawCommand) 
 	-- Prints the active cops online with a /blip that is on 
-	sendMsg(source, 'The active cops on are:')
-	for id, _ in pairs(onDuty) do 
-		TriggerClientEvent('chatMessage', source, '^9[^4' .. id .. '^9] ^0' .. GetPlayerName(id));
-	end
+		sendMsg(source, 'The active cops on are:')
+		for id, _ in pairs(onDuty) do 
+			TriggerClientEvent('chatMessage', source, '^9[^4' .. id .. '^9] ^0' .. GetPlayerName(id));
+		end
+	end			
 end)
 function sendMsg(src, msg) 
 	TriggerClientEvent('chatMessage', src, prefix .. msg);
